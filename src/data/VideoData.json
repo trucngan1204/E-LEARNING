@@ -1,0 +1,62 @@
+[
+  {
+    "videoID": "fiepeipx9X4",
+    "title": "Giới thiệu khóa học",
+    "time": "30 phút",
+    "thumbnail": "./images/thumbnailvideo.jpg"
+  },
+  {
+    "videoID": "nF1fSKEiyA0",
+    "title": "Cơ bản - phần 1",
+    "time": "01:30",
+    "thumbnail": "./images/thumbnailvideo.jpg"
+  },
+  {
+    "videoID": "5Q2Pc-e-8Qc", 
+    "title": "Cơ bản - phần 2",
+    "time": "01:30",
+    "thumbnail": "./images/thumbnailvideo.jpg"
+  },
+  {
+    "videoID": "7JPTlqRRf1w",
+    "title": "Bài tập kiểm tra kiến thức cơ bản",
+    "time": "01:00",
+    "thumbnail": "./images/thumbnailvideo.jpg"
+  },
+  {
+    "videoID": "J5Dsuw3R6UQ",
+    "title": "Ôn tập & nâng cao",
+    "time": "01:00",
+    "thumbnail": "./images/thumbnailvideo.jpg"
+  },
+  {
+    "videoID": "BNGBDIH-Rfg",
+    "title": "Nâng cao - phần 1",
+    "time": "01:30",
+    "thumbnail": "./images/thumbnailvideo.jpg"
+  },
+  {
+    "videoID": "2m8aHdMffPk",
+    "title": "Nâng cao - phần 2",
+    "time": "01:30",
+    "thumbnail": "./images/thumbnailvideo.jpg"
+  },
+  {
+    "videoID": "HnDFWFmjd3E",
+    "title": "Nâng cao - phần 3",
+    "time": "01:30",
+    "thumbnail": "./images/thumbnailvideo.jpg"
+  },
+  {
+    "videoID": "s3kKOyqARBU",
+    "title": "Nâng cao - phần 4",
+    "time": "01:30",
+    "thumbnail": "./images/thumbnailvideo.jpg"
+  },
+  {
+    "videoID": "5m4QcGCBoC0",
+    "title": "Bài tập cuối khóa",
+    "time": "01:30",
+    "thumbnail": "./images/thumbnailvideo.jpg"
+  }
+]

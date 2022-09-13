@@ -1,0 +1,64 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  transition: all 0.3s;
+  opacity: 0;
+  width: fit-content;
+  background-color: rgb(92, 92, 92);
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 3px;
+  padding: 3px 5px;
+  position: absolute;
+  top: -30px;
+  left: -1px;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+  transition: all 0.3s;
+}
+.ant-table-container {
+  box-shadow: 8px 8px 20px rgb(0 0 0 / 10%);
+}
+.ant-menu-submenu-title {
+  display: flex !important;
+  align-items: center;
+}
+.ant-menu-light .ant-menu-submenu-title:hover,
+.ant-menu-item a:hover,
+.ant-menu-sub .ant-menu-title-content a:hover,
+.ant-menu-light .ant-menu-item:hover,
+.ant-menu-light .ant-menu-item-active, .ant-menu-vertical .ant-menu-submenu-selected {
+  color: #e96036 !important;
+  background-color: transparent important;
+}
+.ant-menu-item a,
+.ant-menu-submenu-arrow {
+  color: white !important;
+  font-size: 15px !important;
+}
+.ant-menu-sub .ant-menu-title-content a {
+  color: #1f2937 !important;
+  line-height: 1.4 !important;
+  background: transparent;
+}
+.ant-menu-item-selected a,
+.ant-menu-item-selected a:hover {
+  color: #fff !important;
+}
+/* .ant-menu-item a:hover .ant-menu-item-selected {
+  background-color: #E96036!important;
+} */
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected, 
+.ant-menu-item:active, .ant-menu-submenu-title:active{
+  background-color: #e96036 !important;
+  color:#fff!important;
+}
+
+/* .undefined-action{display:none} */

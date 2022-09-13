@@ -1,0 +1,27 @@
+@media (max-width:639px){
+  .courses--header {
+    margin-top: 0px!important;
+    height: 133px!important;
+  }
+}
+.courses--header {
+    margin-top: 90px;
+    background: url("./../../../../assets/images/header-courses-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 400px;
+  }
+  h2.courses-each-cate-heading {
+    min-height: 70px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  p.courses-each-cate-description {
+    min-height: 80px !important;
+  }
+

@@ -1,0 +1,22 @@
+.footer .footer_links_course a,
+.footer .footer_links_community a,
+.footer .footer_links_quick a {
+ color:#5D5A6F!important;
+ transition: .2s all;
+}
+.footer .footer_links_course a:hover,
+.footer .footer_links_community a:hover,
+.footer .footer_links_quick a:hover{
+    color:#E96036!important;
+    padding-left: 5px;
+}
+.footer svg {
+transition: .2s all;
+}
+.footer svg:hover {
+    fill: #e96036!important;
+    padding:0!important;
+}
+.footer_copyright a{
+    color:#E96036!important;
+}

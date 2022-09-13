@@ -1,0 +1,35 @@
+.draw {
+  animation: draw 4000ms ease-in-out;
+  stroke: #41140F;
+}
+.draw-mini {
+  animation: draw 4000ms ease-in-out;
+  stroke: #000;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 0 400;
+    stroke-dashoffset: 200;
+    fill-opacity: 0;
+    stroke-width: 2;
+  }
+  20% {
+    stroke-dasharray: 200 0;
+    stroke-dashoffset: 200;
+    fill-opacity: 0;
+    stroke-width: 2;
+  }
+  40% {
+    fill-opacity: 1;
+    stroke-width: 0;
+  }
+  60% {
+    fill-opacity: 1;
+    stroke-width: 0;
+  }
+  100% {
+    fill-opacity: 1;
+    stroke-width: 0;
+  }
+}

@@ -1,0 +1,48 @@
+.loading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #f4f4f4;
+}
+.loading-logo {
+  width: 300px;
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.draw {
+  animation: draw 4000ms ease-in-out infinite;
+  stroke: #ff6652;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 0 400;
+    stroke-dashoffset: 200;
+    fill-opacity: 0;
+    stroke-width: 1;
+  }
+  20% {
+    stroke-dasharray: 200 0;
+    stroke-dashoffset: 200;
+    fill-opacity: 0;
+    stroke-width: 1;
+  }
+  40% {
+    fill-opacity: 1;
+    stroke-width: 0;
+  }
+  60% {
+    fill-opacity: 1;
+    stroke-width: 0;
+  }
+  100% {
+    fill-opacity: 0;
+    stroke-width: 0;
+  }
+}

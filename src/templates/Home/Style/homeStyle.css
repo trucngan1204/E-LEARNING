@@ -1,0 +1,26 @@
+@media (max-width: 639px) {
+    .img_screenshotlive_home::before{
+        content:'';
+        background: url('./../../../assets/images/Pattern.png');
+        width: 130px;
+        height: 120px;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: -69px;
+        right: 0;
+        z-index: -1;
+    }
+}
+@media (min-width: 640px) {
+    .img_screenshotlive_home::before{
+        content:'';
+        background: url('./../../../assets/images/Pattern.png');
+        width: 300px;
+        height: 300px;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: -119px;
+        right: 60px;
+        z-index: -1;
+    }
+    }

@@ -1,0 +1,51 @@
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.video-responsive iframe {
+  border-radius: 15px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.video_playlist_course {
+  transition: 0.2s ease-in-out;
+  border-radius: 10px;
+  /* width: 85%; */
+}
+.activeCourse{
+  overflow-x: hidden;
+  transform: scale(1.05);
+  box-shadow: 10px 20px 20px #50239e20;
+}
+.activeCourse h3 {
+  color: #7c3aed !important;
+}
+.video_playlist_course:hover {
+  overflow-x: hidden;
+  transform: scale(1.05);
+  box-shadow: 10px 20px 20px #50239e20;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.video_playlist_course:hover h3 {
+  color: #7c3aed !important;
+}
+
+.video_playlist::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+  background: rgb(226, 226, 226);
+}
+.video_playlist::-webkit-scrollbar-thumb {
+  background: #7c3aed;
+  border: 1px solid #7c3aed;
+  border-radius: 5px;
+}
+.video_playlist::-webkit-scrollbar-thumb:hover {
+  background: #5121a3;
+}

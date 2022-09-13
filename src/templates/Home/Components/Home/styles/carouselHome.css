@@ -1,0 +1,56 @@
+@media (max-width: 639px) {
+
+  .ant-carousel .slick-next,
+  .ant-carousel .slick-prev {
+    padding: 10px !important;
+    font-size: 14px !important;
+  }
+}
+
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover {
+  color: rgb(44, 44, 44) !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+.ant-carousel .slick-prev {
+  left: 20px !important;
+  font-size: 20px !important;
+  z-index: 2;
+  color: rgba(0, 0, 0, 0.37) !important;
+  background-color: rgba(255, 255, 255, 0.253) !important;
+  padding: 20px !important;
+  border-radius: 100% !important;
+  width: unset !important;
+  height: unset !important;
+  transition: 0.1s linear !important;
+}
+
+.ant-carousel .slick-next {
+  font-size: 20px !important;
+  right: 20px !important;
+  z-index: 2;
+  color: rgba(0, 0, 0, 0.37) !important;
+  background-color: rgba(255, 255, 255, 0.253) !important;
+  padding: 20px !important;
+  border-radius: 100% !important;
+  width: unset !important;
+  height: unset !important;
+  transition: 0.1s linear !important;
+}
+
+@-webkit-keyframes floating-two {
+  0% {
+    -webkit-transform: rotate(0deg) translateX(4px) rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(1turn) translateX(4px) rotate(-1turn);
+  }
+}
+@keyframes floating-two {
+  0% {
+    -webkit-transform: rotate(0deg) translateX(4px) rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(1turn) translateX(4px) rotate(-1turn);
+  }
+}
