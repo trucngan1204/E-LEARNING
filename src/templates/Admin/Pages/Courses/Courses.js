@@ -26,14 +26,14 @@ export default function Courses({ tenKhoaHoc }) {
 
   const columns = [
     {
-      title: "Code",
+      title: "Mã khoá học",
       dataIndex: "maKhoaHoc",
       sorter: (a, b) => a.maKhoaHoc.length - b.maKhoaHoc.length,
       sortDirections: ["descend"],
       width: "10%",
     },
     {
-      title: "Course Name",
+      title: "Tên khoá học",
       dataIndex: "tenKhoaHoc",
       sorter: (a, b) => {
         let courseA = a.tenKhoaHoc.toLowerCase().trim();
@@ -47,7 +47,7 @@ export default function Courses({ tenKhoaHoc }) {
       width: "20%",
     },
     {
-      title: "Thumbnail",
+      title: "Hình Ảnh",
       dataIndex: "hinhAnh",
       render: (text, courses, index) => {
         return (
@@ -69,7 +69,7 @@ export default function Courses({ tenKhoaHoc }) {
       width: "5%",
     },
     {
-      title: "Description",
+      title: "Mô Tả",
       dataIndex: "moTa",
       render: (text, courses) => {
         return (
@@ -83,7 +83,7 @@ export default function Courses({ tenKhoaHoc }) {
       width: "25%",
     },
     {
-      title: "Category",
+      title: "Khoá học",
       dataIndex: "danhMucKhoaHoc.tenDanhMucKhoaHoc",
       render: (text, courses) => {
         return <Fragment>{courses.danhMucKhoaHoc.tenDanhMucKhoaHoc}</Fragment>;
@@ -99,7 +99,7 @@ export default function Courses({ tenKhoaHoc }) {
       width: "15%",
     },
     {
-      title: "Instructor",
+      title: "Người tạo",
       dataIndex: "nguoiTao.taiKhoan",
       render: (text, courses) => {
         return <Fragment>{courses.nguoiTao.taiKhoan}</Fragment>;
@@ -116,7 +116,7 @@ export default function Courses({ tenKhoaHoc }) {
     },
 
     {
-      title: "Action",
+      title: "Lựa chọn",
       dataIndex: "action",
       render: (text, courses) => {
         return (
@@ -127,7 +127,7 @@ export default function Courses({ tenKhoaHoc }) {
               className="tooltip bg-white"
             >
               <PencilAltIcon className="mr-3 h-7 w-7 text-blue-500 hover:scale-125 transition duration-150 origin-center bg-white" />
-              <span className="tooltiptext">Edit</span>
+              <span className="tooltiptext">Sửa</span>
             </Link>
             <span
               key={2}
@@ -143,7 +143,7 @@ export default function Courses({ tenKhoaHoc }) {
               }}
             >
               <TrashIcon className=" h-7 w-7 text-red-600 hover:scale-125 transition duration-150 origin-center bg-white" />
-              <span className="tooltiptext">Delete</span>
+              <span className="tooltiptext">Xoá</span>
             </span>
           </Fragment>
         );
@@ -170,7 +170,7 @@ export default function Courses({ tenKhoaHoc }) {
             className="text-3xl font-semibold text-gray-900"
             style={{ color: "#E96036" }}
           >
-            Courses
+            Khoá học
           </span>
           <Button
             className="ml-5"
@@ -178,14 +178,14 @@ export default function Courses({ tenKhoaHoc }) {
               history.push("/admin/courses/add-new");
             }}
           >
-            Add new
+            Thêm khoá học
           </Button>
           </div>
           <div className="inline-flex  items-center">
             <Search
-              placeholder="Enter the course name..."
+              placeholder="Nhập tên khoá học..."
               onSearch={onSearch}
-              enterButton="Search"
+              enterButton="Tìm kiếm"
               size="large"
             />
           </div>

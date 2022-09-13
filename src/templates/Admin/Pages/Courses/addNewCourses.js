@@ -84,7 +84,7 @@ console.log(maKH.toString())
             className="text-3xl font-semibold text-gray-900"
             style={{ color: "#E96036" }}
           >
-            Add new course
+            Thêm khoá học
           </span>
         </div>
         <div className="max-w-7xl mx-auto xl:px-0 sm:px-6 md:px-8">
@@ -146,7 +146,7 @@ console.log(maKH.toString())
                   type="submit"
                   style={{ backgroundColor: "#e96036", color: "#fff" }}
                 >
-                  Add course
+                  Thêm khoá học
                 </button>
               </Form.Item>
             </Form>

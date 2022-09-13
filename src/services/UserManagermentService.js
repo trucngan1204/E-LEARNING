@@ -24,9 +24,23 @@ export class UserManagermentService extends baseService {
         `/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUPID}`
     );
   };
+
+  getDetailUser = () => {
+    return this.post('/api/QuanLyNguoiDung/ThongTinTaiKhoan');
+  };
+
   deleteUser = (taiKhoan)=>{
-      return this.delete(`/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`)
+      return this.delete(`/api/QuanLyNguoiDung/XoaNguoiDung?taiKhoan=${taiKhoan}`)
   }
+
+  addUser = (formData) =>{
+    return this.post(`/api/QuanLyNguoiDung/ThemNguoiDung`,formData);
+  }
+
+  updateUser = (formData) => {
+    return this.put(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,formData);
+}
+
 }
 
 export const userManagermentService = new UserManagermentService();

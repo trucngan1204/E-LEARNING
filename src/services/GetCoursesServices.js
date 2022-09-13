@@ -32,6 +32,8 @@ export class GetCoursesServices extends baseService {
     return this.post(`api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh`, formData);
   };
 
+  
+
   updateCourseUpload = (formData) => {
     return this.post(`api/QuanLyKhoaHoc/CapNhatKhoaHocUpload`, formData);
   };

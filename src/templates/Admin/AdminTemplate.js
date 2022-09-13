@@ -39,7 +39,7 @@ export default function AdminTemplate(props) {
             <div className="max-w-xs bg-white flex items-center text-sm hover:bg-transparent">
               <img
                 className="h-8 w-8 rounded-full"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                src="https://thumbs.dreamstime.com/b/user-icon-trendy-flat-style-isolated-grey-background-user-symbol-user-icon-trendy-flat-style-isolated-grey-background-123663211.jpg"
                 alt=""
               />
               <span className="mr-3 font-medium">
@@ -148,10 +148,7 @@ export default function AdminTemplate(props) {
                               Danh sách người dùng
                             </Link>
                           </Menu.Item>
-                          <Menu.Item
-                            key="5"
-                            style={{ display: "flex", alignItems: "center" }}
-                          >
+                          {/* <Menu.Item key="5" style={{ display: "flex", alignItems: "center" }}>
                             <Link
                               to="/admin/users/add-new"
                               style={{ display: "flex" }}
@@ -159,7 +156,7 @@ export default function AdminTemplate(props) {
                               <PlusCircleIcon className="mr-2" width="15" />
                               Thêm người dùng
                             </Link>
-                          </Menu.Item>
+                          </Menu.Item> */}
                         </SubMenu>      
                       </Menu>
                     </div>

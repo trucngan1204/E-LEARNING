@@ -88,7 +88,7 @@ export default function EditCourse(props) {
             className="text-3xl font-semibold text-gray-900"
             style={{ color: "#E96036" }}
           >
-            Edit course
+            Sửa khoá học
           </span>
         </div>
         <div className="max-w-7xl mx-auto xl:px-0 sm:px-6 md:px-8">
@@ -179,7 +179,7 @@ export default function EditCourse(props) {
                   type="submit"
                   style={{ backgroundColor: "#e96036", color: "#fff" }}
                 >
-                  Update
+                  Cập nhật
                 </button>
               </Form.Item>
             </Form>

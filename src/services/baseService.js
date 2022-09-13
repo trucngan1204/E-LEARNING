@@ -35,7 +35,7 @@ export class baseService{
       url: `${DOMAIN}${url}`,
             method: 'PUT',
             data: model,
-            headers: { 'Authorization': 'Bearer ' + localStorage.getItem(TOKEN) }
+            headers: {TokenCyberSoft, 'Authorization': 'Bearer ' + localStorage.getItem(TOKEN) }
     })
   }
 

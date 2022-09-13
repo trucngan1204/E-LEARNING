@@ -115,11 +115,11 @@ function App() {
               exact
               Component={addNewUser}
             />
-            <AdminTemplate
+            {/* <AdminTemplate
               path="/admin/docs"
               exact
               Component={Documents}
-            />
+            /> */}
 
             <CheckoutTemplate
               path="/checkout/:id"

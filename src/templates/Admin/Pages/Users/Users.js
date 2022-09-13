@@ -2,18 +2,25 @@ import React, { Fragment } from "react";
 import "./../../style/StyleAdmin.css";
 import { PencilAltIcon, SearchIcon, TrashIcon } from "@heroicons/react/outline";
 import { Button, Input, Table } from "antd";
+import { EditOutlined, SearchOutlined, DeleteOutlined} from '@ant-design/icons';
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { history } from "./../../../../App";
+import FormUser from './addNewUser';
 import {
   deleteUserAction,
   getUserListAction,
+  
 } from "../../../../redux/actions/userManagermentAction";
 
 export default function User({ tuKhoa }) {
   const { userList } = useSelector((state) => state.UserManagermentReducer);
-
+  const [showForm, setShowForm] = useState(false);
+  const [capNhat, setCapNhat] = useState({ capNhat: [] });
+  const [typeAction, setTypeAction] = useState('update');
+  const handleCloseForm = () => setShowForm(false);
+  const [q, setQ] =  useState("");
   const dispatch = useDispatch();
 
   const { Search } = Input;
@@ -24,14 +31,14 @@ export default function User({ tuKhoa }) {
 
   const columns = [
     {
-      title: "User name",
+      title: "Tài khoản",
       dataIndex: "taiKhoan",
       sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
       sortDirections: ["descend"],
       width: "10%",
     },
     {
-      title: "Full name",
+      title: "Họ Tên",
       dataIndex: "hoTen",
       sorter: (a, b) => {
         let courseA = a.hoTen.toLowerCase().trim();
@@ -50,12 +57,12 @@ export default function User({ tuKhoa }) {
       width: "5%",
     },
     {
-      title: "Phone",
+      title: "Điện thoại",
       dataIndex: "soDt",
       width: "25%",
     },
     {
-      title: "Type",
+      title: "Mã người dùng",
       dataIndex: "maLoaiNguoiDung",
       sorter: (a, b) => {
         let GV = a.maLoaiNguoiDung.toLowerCase().trim();
@@ -68,11 +75,16 @@ export default function User({ tuKhoa }) {
       width: "15%",
     },
     {
-      title: "Action",
-      dataIndex: "action",
+      title: "Lựa chọn",
+      dataIndex: "taiKhoan",
       render: (text, user) => {
         return (
           <Fragment>
+            <span className = "mr-2 text-base" style={{cursor:'pointer'}} onClick={()=>{
+                        setTypeAction('update');
+                        setCapNhat(user);
+                        setShowForm(true);
+                    }}><EditOutlined style={{ color: 'blue' }} /> </span>
             <span
               key={2}
               className="tooltip bg-white cursor-pointer"
@@ -85,7 +97,7 @@ export default function User({ tuKhoa }) {
               }}
             >
               <TrashIcon className=" h-7 w-7 text-red-600 hover:scale-125 transition duration-150 origin-center bg-white" />
-              <span className="tooltiptext">Delete</span>
+              <span className="tooltiptext">Xoá</span>
             </span>
           </Fragment>
         );
@@ -106,27 +118,33 @@ export default function User({ tuKhoa }) {
     <Fragment>
       <div className="py-12">
         <div className="max-w-7xl flex flex-row items-center justify-between mx-auto px-4 xl:px-0 sm:px-6 md:px-8">
-          <div className="flex  items-center">
-            <span
+          {/* <div className="flex  items-center"> */}
+          <div>
+            {/* <span
               className="text-3xl font-semibold text-gray-900"
               style={{ color: "#E96036" }}
             >
-              User List
-            </span>
-            <Button
+               Người dùng
+            </span> */}
+            <h3 className="text-4xl">Quản lý người dùng</h3>
+            {/* <Button
               className="ml-5"
               onClick={() => {
                 history.push("/admin/users/add-new");
               }}
             >
-              Add new
-            </Button>
+              Thêm người dùng
+            </Button> */}
+            <Button type='primary' style={{ width: 150 }} className='mb-4' onClick={() => {
+                setTypeAction('insert');
+                setShowForm(true);
+            }}>Thêm người dùng</Button>
           </div>
           <div className="inline-flex  items-center">
             <Search
-              placeholder="Enter user name..."
+              placeholder="Nhập tên ..."
               onSearch={onSearch}
-              enterButton="Search"
+              enterButton="Tìm kiếm"
               size="large"
             />
           </div>
@@ -138,8 +156,9 @@ export default function User({ tuKhoa }) {
               dataSource={userList}
               enterButton={<SearchIcon />}
               onChange={onChange}
-              rowKey={"maKhoaHoc"}
+              rowKey={"taiKhoan"}
             />
+             <FormUser show = {showForm} close ={handleCloseForm} capNhat = {capNhat} type = {typeAction}/>
           </div>
         </div>
       </div>
