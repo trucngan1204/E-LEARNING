@@ -1,9 +1,11 @@
+
 import {
   UPDATE_COURSE,
   DELETE_COURSE,
   GET_COURSES_ADMIN,
   ADD_NEW_COURSE_ADMIN,
   GET_DETAILS_COURSES,
+  CAP_NHAT_KHOA_HOC,
 } from "../types/coursesType";
 
 let newCourse = {};
@@ -56,6 +58,10 @@ export const CoursesAdminReducer = (state = stateDefault, action) => {
     case UPDATE_COURSE: {
       let {courseUpdate} = action;
       return { ...state, courseUpdate };
+    }
+    case CAP_NHAT_KHOA_HOC:{
+      let{capNhatKhoaHoc}=action;
+      return { ...state, capNhatKhoaHoc };
     }
     case DELETE_COURSE: {
       state.detailCourseEdit = action.detailCourseEdit;

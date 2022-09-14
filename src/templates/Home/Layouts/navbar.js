@@ -44,7 +44,7 @@ export default function Navbar({ toggle }) {
               setShowModal(!showModal);
             }}
           >
-            {t("Sign In")}
+            {t("Đăng nhập")}
           </button>
           {showModal && (
             <SignInModal setShowModal={setShowModal} showModal={showModal} />
@@ -54,7 +54,7 @@ export default function Navbar({ toggle }) {
             className="w-max text-center font-normal hover:shadow-xl lg:text-md xl:text-lg sm:px-4 sm:py-2 p-3 text-xs rounded-md bg-main-500 text-white hover:text-white"
             to="/signup"
           >
-            {t("Sign Up")}
+            {t("Đăng ký")}
           </Link>
         </div>
       );
@@ -97,7 +97,7 @@ export default function Navbar({ toggle }) {
                   window.location.replace("/");
                 }}
               >
-                Sign out
+                Đăng xuất
               </button>
             </li>
             {userSignIn.maLoaiNguoiDung !== "GV" ? (
@@ -156,7 +156,7 @@ export default function Navbar({ toggle }) {
     hover:shadow-lg transition-colors duration-200"
             to="/"
           >
-            {t("Home")}
+            {t("Trang chủ")}
           </NavLink>
           <div className="group inline-flex">
             <NavLink
@@ -165,7 +165,7 @@ export default function Navbar({ toggle }) {
     hover:shadow-lg transition-colors duration-200 group relative flex"
               to="/courses"
             >
-              {t("Courses")}
+              {t("Khoá học")}
               <svg
                 className="w-6 h-6 inline"
                 fill="none"
@@ -194,7 +194,7 @@ export default function Navbar({ toggle }) {
     hover:shadow-lg transition-colors duration-200"
             to="/contact"
           >
-            {t("Contact")}
+            {t("Liên hệ")}
           </NavLink>
         </div>
         {renderSignIn()}

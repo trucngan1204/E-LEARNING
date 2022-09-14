@@ -5,16 +5,15 @@ import { Button, Input, Table } from "antd";
 import { EditOutlined, SearchOutlined, DeleteOutlined} from '@ant-design/icons';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { history } from "./../../../../App";
-import FormUser from './addNewUser';
+import AddNewUsers from './addNewUser';
 import {
   deleteUserAction,
   getUserListAction,
   
 } from "../../../../redux/actions/userManagermentAction";
 
-export default function User({ tuKhoa }) {
+
+export default function User() {
   const { userList } = useSelector((state) => state.UserManagermentReducer);
   const [showForm, setShowForm] = useState(false);
   const [capNhat, setCapNhat] = useState({ capNhat: [] });
@@ -26,52 +25,70 @@ export default function User({ tuKhoa }) {
   const { Search } = Input;
 
   useEffect(() => {
-    dispatch(getUserListAction(tuKhoa));
+    dispatch(getUserListAction());
   }, []);
 
   const columns = [
     {
       title: "Tài khoản",
       dataIndex: "taiKhoan",
-      sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
-      sortDirections: ["descend"],
-      width: "10%",
+      sorter: (a, b) => {
+        let taiKhoanA = a.taiKhoan.toLowerCase().trim();
+        let taiKhoanB = b.taiKhoan.toLowerCase().trim();
+        if (taiKhoanA > taiKhoanB) {
+            return 1;
+        }
+        return -1;
     },
+    sortDirections: ['descend', 'ascend'],
+    width: '15%'
+  },
     {
       title: "Họ Tên",
       dataIndex: "hoTen",
       sorter: (a, b) => {
-        let courseA = a.hoTen.toLowerCase().trim();
-        let courseB = b.hoTen.toLowerCase().trim();
-        if (courseA > courseB) {
+        let hoTenA = a.hoTen.toLowerCase().trim();
+        let hoTenB = b.hoTen.toLowerCase().trim();
+        if (hoTenA > hoTenB) {
           return 1;
         }
         return -1;
       },
-      sortDirections: ["descend"],
+      sortDirections: ["descend", 'ascend'],
       width: "20%",
     },
     {
-      title: "Email",
-      dataIndex: "email",
-      width: "5%",
+      title: 'Email',
+            dataIndex: 'email',
+            sorter: (a, b) => {
+                let emailA = a.email.toLowerCase().trim();
+                let emailB = b.email.toLowerCase().trim();
+                if(emailA > emailB) {
+                    return 1;
+                }
+                return -1;
+            },
+           
+            sortDirections: ['descend', 'ascend'],
+            width: '20%'
     },
     {
       title: "Điện thoại",
       dataIndex: "soDt",
-      width: "25%",
+      width: "15%",
     },
     {
       title: "Mã người dùng",
       dataIndex: "maLoaiNguoiDung",
-      sorter: (a, b) => {
-        let GV = a.maLoaiNguoiDung.toLowerCase().trim();
-        let HV = b.maLoaiNguoiDung.toLowerCase().trim();
-        if (GV > HV) {
-          return 1;
-        }
-        return -1;
-      },
+      key: 'maLoaiNguoiDung',
+      // sorter: (a, b) => {
+      //   let GV = a.maLoaiNguoiDung.toLowerCase().trim();
+      //   let HV = b.maLoaiNguoiDung.toLowerCase().trim();
+      //   if (GV > HV) {
+      //     return 1;
+      //   }
+      //   return -1;
+      // },
       width: "15%",
     },
     {
@@ -99,12 +116,15 @@ export default function User({ tuKhoa }) {
               <TrashIcon className=" h-7 w-7 text-red-600 hover:scale-125 transition duration-150 origin-center bg-white" />
               <span className="tooltiptext">Xoá</span>
             </span>
+            
           </Fragment>
         );
       },
       width: "10%",
     },
   ];
+
+  const data = userList;
 
   const onChange = (pagination, filters, sorter, extra) => {
     console.log("params", pagination, filters, sorter, extra);
@@ -118,23 +138,8 @@ export default function User({ tuKhoa }) {
     <Fragment>
       <div className="py-12">
         <div className="max-w-7xl flex flex-row items-center justify-between mx-auto px-4 xl:px-0 sm:px-6 md:px-8">
-          {/* <div className="flex  items-center"> */}
           <div>
-            {/* <span
-              className="text-3xl font-semibold text-gray-900"
-              style={{ color: "#E96036" }}
-            >
-               Người dùng
-            </span> */}
             <h3 className="text-4xl">Quản lý người dùng</h3>
-            {/* <Button
-              className="ml-5"
-              onClick={() => {
-                history.push("/admin/users/add-new");
-              }}
-            >
-              Thêm người dùng
-            </Button> */}
             <Button type='primary' style={{ width: 150 }} className='mb-4' onClick={() => {
                 setTypeAction('insert');
                 setShowForm(true);
@@ -142,7 +147,7 @@ export default function User({ tuKhoa }) {
           </div>
           <div className="inline-flex  items-center">
             <Search
-              placeholder="Nhập tên ..."
+              placeholder="Nhập từ khoá ..."
               onSearch={onSearch}
               enterButton="Tìm kiếm"
               size="large"
@@ -153,12 +158,12 @@ export default function User({ tuKhoa }) {
           <div className="py-4">
             <Table
               columns={columns}
-              dataSource={userList}
+              dataSource={data}
               enterButton={<SearchIcon />}
               onChange={onChange}
               rowKey={"taiKhoan"}
             />
-             <FormUser show = {showForm} close ={handleCloseForm} capNhat = {capNhat} type = {typeAction}/>
+             <AddNewUsers show = {showForm} close ={handleCloseForm} capNhat = {capNhat} type = {typeAction}/>
           </div>
         </div>
       </div>

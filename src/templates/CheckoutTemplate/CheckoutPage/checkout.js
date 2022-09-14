@@ -1,12 +1,32 @@
 import React, { Fragment, useState } from "react";
 import "./../Style/CheckoutStyle.css";
 import { Collapse } from "antd";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Radio, Space } from "antd";
 import { useSelector } from "react-redux";
 import BreadCrumb from "../../../components/Breadcrumbs/Breadcrumbs";
+import { Modal} from 'antd';
+import Swal from 'sweetalert2'
 
 export default function Checkout(props) {
+
+  const countDown = () =>{
+    let secondsToGo = 3;
+    const modal = Modal.success({
+      title: 'Ghi danh thành công',
+      content: `Thông báo tự động tắt sau ${secondsToGo}s.`,
+    });
+    const timer = setInterval(() => {
+      secondsToGo -= 1;
+      modal.update({
+        content: `Thông báo tự động tắt sau ${secondsToGo}s.`,
+      });
+    }, 1000);
+    setTimeout(() => {
+      clearInterval(timer);
+      modal.destroy();
+    }, secondsToGo * 1000);
+  }
   const courseDetail = useSelector(
     (state) => state.CoursesReducer.courseDetail
   );
@@ -45,58 +65,27 @@ export default function Checkout(props) {
                     Thanh toán
                   </span>
                 </div>
-                <div className="flex-1 justify-end flex items-center">
-                  <img src="/images/secure.svg" alt="" width="10%" />
-                  <span className="text-lg pl-1">Secure Connection</span>
-                </div>
               </div>
               <Radio.Group onChange={radioPayment} value={state.value}>
                 <Space direction="vertical">
                   <Radio value={1}>
-                    <span className="text-xl">Direct payment</span>
+                    <span className="text-xl">Thanh toán trực tiếp</span>
                   </Radio>
-
-                  <Radio value={2}>
-                    <img src="/images/paypal.png" alt="paypal" width="100%" />
-                  </Radio>
-                  <Radio value={3}>
-                    <div className="flex flex-row gap-4 items-center">
-                      <span className="text-xl"> Momo</span>
-                      <img src="/images/momo.png" alt="momo" width="6%" />
-                    </div>
-                  </Radio>
-                  <Collapse onChange={callback}>
-                    <Panel
-                      header={<span className="text-xl">Internet Banking</span>}
-                      key="1"
-                    >
-                      <div className="grid grid-flow-col grid-cols-6">
-                        <div className="col-span-1">
-                          <Radio value={4}>
-                            <img
-                              src="/images/techcombank.png"
-                              width="100%"
-                              alt=""
-                            />
-                          </Radio>
-                        </div>
-                        <div className="col-span-1">
-                          <Radio value={5}>
-                            <img src="/images/vib.png" width="100%" alt="" />
-                          </Radio>
-                        </div>
-                      </div>
-                    </Panel>
-                  </Collapse>
                 </Space>
               </Radio.Group>
               <textarea
                 className="p-5 w-full mt-10"
                 placeholder="Note to Administrator"
               ></textarea>
-              <button className="mt-10 py-5 w-full bg-indigo-500 hover:bg-indigo-700 text-lg rounded-md transition duration-150 text-white">
-                Đặt hàng
+              <NavLink to ="/">
+              <button 
+                // countDown={countDown}
+                className="mt-10 py-5 w-full bg-indigo-500 hover:bg-indigo-700 text-lg rounded-md transition duration-150 text-white">
+
+               Đặt hàng
+               
               </button>
+              </NavLink>
             </div>
             <div className="relative">
               <div className="your-order p-5 my-8 rounded-md text-center">

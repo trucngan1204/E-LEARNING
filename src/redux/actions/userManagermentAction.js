@@ -1,6 +1,7 @@
 import { history } from "../../App";
 import { userManagermentService } from "../../services/UserManagermentService";
 import {GET_USER_LIST, SIGN_IN, SIGN_UP } from "../types/userManagermentType";
+
 import Swal from 'sweetalert2'
 
 export const signInAction = (DangNhap, setShowModal) => {
@@ -64,7 +65,7 @@ export const deleteUserAction = (taiKhoan)=>{
     return async(dispatch)=>{
       try {
         let result = await userManagermentService.deleteUser(taiKhoan);
-      if(result.data.statuscode === 200){
+        console.log('result',result.data.content);
         Swal.fire({
           title: 'Xóa thành công!',
           icon: 'success',
@@ -74,12 +75,10 @@ export const deleteUserAction = (taiKhoan)=>{
             dispatch(getUserListAction())
           }
         })
-      }
       } catch (error) {
-        console.log('lỗi', error);
+        console.log('error',error.response?.data);
             Swal.fire({
                 title: 'Xóa thất bại!',
-                text: `${error.response?.data}`,
                 icon: 'error',
             })
       }
@@ -91,7 +90,7 @@ export const updateUserAction =(capNhat) =>{
   return async(dispatch) =>{
     try {
       let result = await userManagermentService.updateUser(capNhat);
-      if (result.data.statusCode === 200) {
+      console.log('result',result.data.content);
           Swal.fire({
               title: 'Cập nhật thành công!',
               icon: 'success',
@@ -99,17 +98,17 @@ export const updateUserAction =(capNhat) =>{
           }).then((result) => {
               if (result.isConfirmed) {
                   dispatch(getUserListAction())
+                  history.push('/admin/users')
               }
           })
 
-      }
 
 
     } catch (error) {
         console.log(error.response?.data);
         Swal.fire({
             title: 'Cập nhật thất bại!',
-            text: `${error.response?.data}`,
+            // text: `${error.response?.data}`,
             icon: 'error',
         })
   }
@@ -121,7 +120,7 @@ export const addUserAction = (thongTinNguoiDung) => {
   return async (dispatch) => {
     try {
         let result = await userManagermentService.addUser(thongTinNguoiDung);
-        if (result.data.statusCode === 200) {
+        console.log('result',result.data.content);
             Swal.fire({
                 title: 'Thêm thành công!',
                 icon: 'success',
@@ -129,36 +128,18 @@ export const addUserAction = (thongTinNguoiDung) => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     dispatch(getUserListAction())
+                    history.push('/admin/users')
                 }
             })
 
-        }
 
-
-
-    } catch (errors) {
-        console.log(errors.response?.data);
+    } catch (error) {
+        console.log(error.response?.data);
         Swal.fire({
             title: 'Thêm thất bại!',
-            text: `${errors.response?.data}`,
+            // text: `${errors.response?.data}`,
             icon: 'error',
         })
     }
 }
 }
-
-// export const deleteUserAction = (taiKhoan)=>{
-//     return async (dispatch) => {
-//     try {
-//       const result = await userManagermentService.deleteUser(taiKhoan);
-//       alert ('Xoá  thành công!')
-//       console.log({result})
-      
-//       dispatch(getUserListAction())
-//       window.location.reload();
-
-//     } catch (error) {
-//       console.log(error.response);
-//     }
-//   }
-// }

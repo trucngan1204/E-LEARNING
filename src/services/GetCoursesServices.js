@@ -13,7 +13,7 @@ export class GetCoursesServices extends baseService {
   getCoursesAdmin = (tenKhoaHoc) => {
     if (tenKhoaHoc.trim() !== ''){
     return this.get(
-      `api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${tenKhoaHoc}&MaNhom=${GROUPID}`
+      `/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${tenKhoaHoc}&MaNhom=${GROUPID}`
     )}
     return this.get(`/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=${GROUPID}`);
   };
@@ -29,17 +29,19 @@ export class GetCoursesServices extends baseService {
     );
   };
   addCourseUploadImg = (formData) => {
-    return this.post(`api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh`, formData);
+    return this.post(`/api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh`, formData);
   };
 
-  
+  capNhatKhoaHoc = (formData)=>{
+    return this.put(`/api/QuanLyKhoaHoc/CapNhatKhoaHoc`,formData);
+  }
 
   updateCourseUpload = (formData) => {
-    return this.post(`api/QuanLyKhoaHoc/CapNhatKhoaHocUpload`, formData);
+    return this.post(`/api/QuanLyKhoaHoc/CapNhatKhoaHocUpload`, formData);
   };
 
   deleteCourse = (maKhoaHoc) => {
-    return this.delete(`api/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${maKhoaHoc}`);
+    return this.delete(`/api/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${maKhoaHoc}`);
   };
 }
 

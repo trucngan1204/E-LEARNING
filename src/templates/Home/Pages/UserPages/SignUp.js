@@ -65,7 +65,7 @@ export default function Signup() {
           <form onSubmit={formik.handleSubmit}>
             <div>
               <div className="text-sm font-bold font-body text-gray-700 tracking-wide">
-                Username:
+                Tên tài khoản
               </div>
               <input
                 name="taiKhoan"
@@ -81,7 +81,7 @@ export default function Signup() {
             <div className="mt-8 passwordSignIn">
               <div className="flex justify-between items-center">
                 <div className="text-sm font-bold text-gray-700 tracking-wide">
-                  Password:
+                  Mật khẩu
                 </div>
               </div>
               <input
@@ -160,13 +160,13 @@ export default function Signup() {
                           shadow-lg"
                 style={{ backgroundColor: "#E96036" }}
               >
-                Sign Up
+                Đăng ký
               </button>
             </div>
           </form>
           <div className="mt-8 text-sm font-display font-semibold text-gray-700 text-center">
             <div>
-              You have an account ?{" "}
+              Bạn đã có tài khoản ?{" "}
               <button
                 onClick={() => {
                   history.push("/signin");
@@ -174,7 +174,7 @@ export default function Signup() {
                 className="cursor-pointer"
                 style={{ color: "#E96036" }}
               >
-                Sign In
+                Đăng nhập
               </button>
             </div>
           </div>

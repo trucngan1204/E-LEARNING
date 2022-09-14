@@ -8,15 +8,14 @@ import { GROUPID } from "../../../../utilities/Settings/config";
 
 export default function AddNewCourses() {
   const [componentSize, setComponentSize] = useState("default");
+  const [imgSrc, setImgSrc] = useState("");
+  const dispatch = useDispatch();
 
   const author = useSelector(
     (state) => state.UserManagermentReducer.userSignIn
   );
 
-  const [imgSrc, setImgSrc] = useState("");
-
-  const dispatch = useDispatch();
-
+  
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
@@ -39,53 +38,51 @@ export default function AddNewCourses() {
         // console.log(e.target.result);
         setImgSrc(e.target.result);
       };
+      formik.setFieldValue('hinhAnh', file);
+      
     }
   };
   const toDay = new Date();
   const date =  toDay.getDate() + "/" + (toDay.getMonth() + 1) + "/" + toDay.getFullYear();
   const maKH = `${toDay.getDate()}${(toDay.getMonth() + 1)}${toDay.getFullYear()}${toDay.getHours()}${toDay.getMinutes()}${toDay.getMilliseconds()}`;
 console.log(maKH.toString())
-  const formik = useFormik({
-    initialValues: {
-      maKhoaHoc:maKH.toString(15),
-      biDanh: "",
-      tenKhoaHoc: "",
-      moTa: "",
-      luotXem: 0,
-      danhGia: 0,
-      hinhAnh: null,
-      maNhom: GROUPID,
-      ngayTao: "",
-      maDanhMucKhoaHoc: "",
-      taiKhoanNguoiTao: author.taiKhoan,
-    },
-    onSubmit: (values) => {
-      let formData = new FormData();
-      for (let key in values) {
-        if (key !== "hinhAnh") {
-          formData.append(key, values[key]);
-        } else if (values.hinhAnh !== null) {
-            formData.append("File", values.hinhAnh, values.hinhAnh.name);
-        } else {
-          alert('Vui lòng chọn ảnh đại diện cho khóa học')
-        }
-      }
-      console.log({values})
-      //Gọi API gửi giá trị FormData về backend
-      dispatch(addCourseUploadImgAction(formData));
-    },
-  });
+const formik = useFormik({
+  initialValues: {
+    maKhoaHoc:maKH.toString(15),
+    biDanh: "",
+    tenKhoaHoc: "",
+    moTa: "",
+    luotXem: 0,
+    danhGia: 0,
+    hinhAnh: {},
+    maNhom: GROUPID,
+    ngayTao: "",
+    maDanhMucKhoaHoc: "",
+    taiKhoanNguoiTao: author.taiKhoan,
+  },
+  onSubmit: (values) => {
+    console.log('values', values);
+    values.maNhom = GROUPID;
+    let formData = new FormData();
+    for (let key in values) {
+      if (key !== "hinhAnh") {
+        formData.append(key, values[key]);
+      } else {
+          formData.append("File", values.hinhAnh, values.hinhAnh.name);
+      } 
+    
+    }
+    console.log({values})
+    //Gọi API gửi giá trị FormData về backend
+    dispatch(addCourseUploadImgAction(formData));
+  },
+});
 
   return (
     <Fragment>
       <div className="py-12">
         <div className="max-w-7xl flex flex-row items-center mx-auto px-4 xl:px-0 sm:px-6 md:px-8">
-          <span
-            className="text-3xl font-semibold text-gray-900"
-            style={{ color: "#E96036" }}
-          >
-            Thêm khoá học
-          </span>
+        <h3 className="text-4xl">Thêm khoá học</h3>
         </div>
         <div className="max-w-7xl mx-auto xl:px-0 sm:px-6 md:px-8">
           <div
@@ -123,7 +120,7 @@ console.log(maKH.toString())
               <Form.Item label="Mô tả">
                 <Input.TextArea name="moTa" onChange={formik.handleChange} />
               </Form.Item>
-              <Form.Item label="Hình đại diện">
+              <Form.Item label="Hình ảnh">
                 <input
                   type="file"
                   accept="image/jpeg, image/png, image/jpg"

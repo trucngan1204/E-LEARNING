@@ -6,6 +6,7 @@ import {
   GET_COURSES_ADMIN,
   GET_DETAILS_COURSES
 } from "../types/coursesType";
+import Swal from 'sweetalert2'
 
 export const getCoursesAdminAction = (tenKhoaHoc='')=>{
   return async (dispatch) => {
@@ -15,27 +16,35 @@ export const getCoursesAdminAction = (tenKhoaHoc='')=>{
       type: GET_COURSES_ADMIN,
       arrCoursesAdmin: result.data,
     });
-  } catch (errors) {
-    console.log(errors.response?.data);
+  } catch (error) {
+    console.log(error.response?.data);
   }
-}
-}
-
+};
+};
 export const addCourseUploadImgAction  = (formData) =>{
   return async(dispatch)=>{
     try {
       let result = await getCoursesServices.addCourseUploadImg(formData);
-      if(result.status === 200){
-        dispatch({
-          type:ADD_NEW_COURSE_ADMIN,
-          newCourse: result.data,
-        })
-        history.push('/admin/courses')
-      }
-      alert ('Thêm khóa học thành công!');
-    }
-    catch(error){
-      console.log({error})
+      console.log('result',result.data.content);
+        Swal.fire({
+          title: 'Thêm thành công!',
+          icon: 'success',
+          confirmButtonColor: '#44c020'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  dispatch(getCoursesAdminAction())
+                  history.push('/admin/courses')
+              }
+          })
+
+
+      } catch (error) {
+      console.log(error.response?.data);
+      Swal.fire({
+          title: 'Thêm thất bại!',
+          // text: `${errors.response?.data}`,
+          icon: 'error',
+      })
     }
   }
 };
@@ -57,37 +66,82 @@ export const updateCourseAction = (formData) => {
   return async (dispatch) => {
     try {
       const result = await getCoursesServices.updateCourseUpload(formData);
-      alert ('Cập nhật khóa học thành công!')
-      // console.log({result})
-      if (result.status === 200){
-        dispatch({
-          type: UPDATE_COURSE,
-          courseUpdate: result.data,
-        });
-      }
-      
-      dispatch(getCoursesAdminAction())
-      history.push('/admin/courses')
+      console.log('result',result.data.content);
+        Swal.fire({
+          title: 'Cập nhật thành công!',
+          icon: 'success',
+          confirmButtonColor: '#44c020'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    dispatch(getCoursesAdminAction())
+                    history.push('/admin/courses')
+                }
+            })
 
-    } catch (errors) {
-      console.log(errors.response?.data);
+
+        } catch (error) {
+        console.log(error.response?.data);
+        Swal.fire({
+            title: 'Cập nhật thất bại!',
+            // text: `${errors.response?.data}`,
+            icon: 'error',
+        })
       
     }
   };
 };
-export const deleteCourseAction = (maKhoaHoc) => {
+
+export const capNhatKhoaHocAction=(formData)=>{
   return async (dispatch) => {
     try {
-      const result = await getCoursesServices.deleteCourse(maKhoaHoc);
-      alert ('Xoá khóa học thành công!')
-      console.log({result})
-      
-      dispatch(getCoursesAdminAction())
-      window.location.reload();
+      const result = await getCoursesServices.updateCourse(formData);
+      console.log('result',result.data.content);
+        Swal.fire({
+          title: 'Cập nhật thành công!',
+          icon: 'success',
+          confirmButtonColor: '#44c020'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    dispatch(getCoursesAdminAction())
+                    history.push('/admin/courses')
+                }
+            })
 
-    } catch (errors) {
-      console.log(errors);
+
+        } catch (error) {
+        console.log(error.response?.data);
+        Swal.fire({
+            title: 'Cập nhật thất bại!',
+            // text: `${errors.response?.data}`,
+            icon: 'error',
+        })
       
     }
   };
+}
+
+export const deleteCourseAction = (maKhoaHoc) => {
+  return async (dispatch) => {
+    try {
+        
+        const result = await getCoursesServices.deleteCourse(maKhoaHoc);
+        console.log('result',result.data.content);
+            Swal.fire({
+                title: 'Xóa thành công!',
+                icon: 'success',
+                confirmButtonColor: '#44c020'
+            }).then((result)=>{
+                if(result.isConfirmed){
+                    dispatch(getCoursesAdminAction())
+                }
+            })            
+    }catch (error) {
+        console.log('errors',error.response?.data);
+        Swal.fire({
+            title: 'Xóa thất bại!',
+            text: `${error.response?.data}`,
+            icon: 'error',
+        })
+    }
+}
 };

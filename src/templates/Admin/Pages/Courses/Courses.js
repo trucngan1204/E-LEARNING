@@ -11,17 +11,19 @@ import {
 import { Link } from "react-router-dom";
 import { history } from "../../../../App";
 
-export default function Courses({ tenKhoaHoc }) {
+// export default function Courses({ tenKhoaHoc }) {
+export default function Courses() {
 
   const { arrCoursesAdmin } = useSelector((state) => state.CoursesAdminReducer);
+  // const { arrCoursesAdminDefault } = useSelector((state) => state.CoursesAdminReducer);
 
   const dispatch = useDispatch();
-  
+  console.log('arrCoursesAdmin', arrCoursesAdmin)
   const { Search } = Input;
 
 
   useEffect(() => {
-    dispatch(getCoursesAdminAction(tenKhoaHoc));
+    dispatch(getCoursesAdminAction());
   }, []);
 
   const columns = [
@@ -165,15 +167,10 @@ export default function Courses({ tenKhoaHoc }) {
     <Fragment>
       <div className="py-12">
         <div className="max-w-7xl flex flex-row items-center justify-between mx-auto px-4 xl:px-0 sm:px-6 md:px-8">
-          <div className="flex  items-center">
-          <span
-            className="text-3xl font-semibold text-gray-900"
-            style={{ color: "#E96036" }}
-          >
-            Khoá học
-          </span>
+          <div>
+            <h3 className="text-4xl">Quản lý khoá học</h3>
           <Button
-            className="ml-5"
+            type='primary' style={{ width: 150 }} className='mb-4'
             onClick={() => {
               history.push("/admin/courses/add-new");
             }}
@@ -201,6 +198,7 @@ export default function Courses({ tenKhoaHoc }) {
             />
           </div>
         </div>
+      
       </div>
     </Fragment>
   );
